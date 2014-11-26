@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../static/ustc_logo.ico">
+    <title>Tiny Library</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/cover.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">Tiny Lib</h3>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            {#                            <li class="active"><a href="#">Home</a></li>#}
+                            {#                            <li><a href="#">Features</a></li>#}
+                            {% if current_user.is_authenticated() %}
+                                {% if current_user.admin == 0 %}
+                                    <li><a href={{ url_for('user_index') }}>个人中心</a></li>
+                                    <li><a href="/logout">退出</a></li>
+                                {% else %}
+                                <li><a href={{ url_for('user_index') }}>个人中心</a></li>
+                                <li><a href={{ url_for('admin_index') }}>管理面板</a></li>
+                                <li><a href="/logout">退出</a></li>
+                                {% endif %}
+                            {% else %}
+                                <li><a href="/login">登录</a></li>
+                                <li><a href="admin/login">管理员入口</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="inner cover">
+                <h1 class="cover-heading">欢迎来到Tiny Library</h1>
+
+                <p class="lead">阅读使人充实，会谈使人敏捷，写作与笔记使人精确……史鉴使人明智；诗歌使人巧慧；数学使人精细；博物使人深沉；伦理之学使人庄重；逻辑与修辞使人善辩...</p>
+
+                <p class="lead">
+                    <a href="/query" class="btn btn-lg btn-default">书籍查询</a>
+                </p>
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Tiny Library for <a href="http://staff.ustc.edu.cn/~ypb">Database Homework</a>, by <a
+                            href="http://blog.csdn.net/gdshen95">@gdshen</a>.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../static/js/bootstrap.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+</body>
+</html>
